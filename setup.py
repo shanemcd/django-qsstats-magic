@@ -4,7 +4,7 @@ from distutils.core import setup
 for cmd in ('egg_info', 'develop'):
     import sys
     if cmd in sys.argv:
-        from setuptools import setup
+        from setuptools import setup, find_packages
 
 setup(
     name='django-qsstats-magic',
@@ -14,7 +14,10 @@ setup(
     author='Matt Croydon, Mikhail Korobov',
     author_email='mcroydon@gmail.com, kmike84@gmail.com',
     url='http://bitbucket.org/kmike/django-qsstats-magic/',
-    packages=['qsstats'],
+    packages = find_packages(
+        where = '.',
+        exclude = ('docs', 'tests')
+    ),
     requires=['dateutil(>=1.4.1, < 2.0)'],
     classifiers=[
         'Development Status :: 4 - Beta',
